@@ -12,7 +12,7 @@ function decodificarImagem(base, imagem) {
   // a variável imagem deve ser o nome do arquivo seguido de extensão
   // ex.: 'imagens/thiago.png'
   let bitmap = new Buffer.from(base, "base64");
-  fs.writeFileSync("imagem.jpg", base);
+  fs.writeFileSync("imagem.jpg", bitmap);
 
   /*console.log("na função convert");
   let arquivo = new Image();
