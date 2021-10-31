@@ -11,6 +11,7 @@ async function insertJogador(jogador) {
     // Efetua a transação no banco de dados
     const resposta = await conn.query(sql, values);
     return resposta.rows[0];
+    
   } catch (error) {
     throw error;
   } finally {
