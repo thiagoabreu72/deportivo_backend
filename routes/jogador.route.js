@@ -1,17 +1,11 @@
-import express from 'express';
+import express from "express";
+import jogadorController from "../controllers/jogador.controller.js";
 
 const routeJogador = express.Router();
 
-routeJogador.get("/",(req, res)=>{
-    res.send('Consultando Jogador');
-});
-
-routeJogador.post("/",(req, res)=>{
-    res.send('Inserindo Jogador');
-});
-
-routeJogador.delete("/",(req, res)=>{
-    res.send('Deletando Jogador');
-});
+routeJogador.post("/", jogadorController.insertJogador);
+routeJogador.get("/", jogadorController.getJogadores);
+routeJogador.get("/:nome", jogadorController.getJogador);
+routeJogador.delete("/:id", jogadorController.deleteJogador);
 
 export default routeJogador;

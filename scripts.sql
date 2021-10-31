@@ -1,27 +1,27 @@
 create table jogador(
-    idJogador int not null primary key,
+    idJogador serial primary key,
     nome text not null,
     foto bytea,
     numero int 
 );
 
 create table time(
-    idTime int not null primary key,
+    idTime serial primary key,
     nome text not null,
     emblema bytea
 );
 
 create table time_jogador(
-    idTimeJogador int not null primary key,    
+    idTimeJogador serial primary key,    
     idTime int not null,
     idJogador int not null ,
     FOREIGN KEY (idTime) REFERENCES time (idTime),
     FOREIGN KEY (idJogador) REFERENCES jogador (idJogador)
 );
 
-insert into jogador values (1,'Thiago','',13);
-insert into jogador values (2,'Allan','',33);
-insert into jogador values (3,'Eduardo Bertollo','',14);
+insert into jogador( nome, foto, numero ) values ('Thiago','',13);
+insert into jogador( nome, foto, numero ) values ('Allan','',33);
+insert into jogador( nome, foto, numero ) values ('Eduardo Bertollo','',14);
 
 insert into time values (1,'Deportivo FC','');
 
