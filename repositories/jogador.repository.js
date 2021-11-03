@@ -11,7 +11,6 @@ async function insertJogador(jogador) {
     // Efetua a transação no banco de dados
     const resposta = await conn.query(sql, values);
     return resposta.rows[0];
-    
   } catch (error) {
     throw error;
   } finally {
@@ -35,12 +34,13 @@ async function getJogadores() {
 }
 
 // Retornar jogador com o nome em específico
-async function getJogador(nome) {
+async function getJogador(jogador) {
   const conn = await connect();
   try {
-    const res = await conn.query("select * from jogadores nome like '%$1%' ", [
-      nome,
-    ]);
+    let parametro = `where nome like '\%${jogador.nome}\%'`;
+    const res = await conn.query("select * from jogador " + parametro); //, [parametro]);
+    console.log(res.rows);
+    return res.rows;
   } catch (error) {
     throw error;
   } finally {
