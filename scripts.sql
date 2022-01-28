@@ -12,8 +12,8 @@ create table time(
     statusTime int not null
 );
 
-create table time_jogador(
-    idTimeJogador serial primary key,    
+create table elenco(
+    idElenco serial primary key,    
     idTime int not null,
     idJogador int not null ,
     FOREIGN KEY (idTime) REFERENCES time (idTime),
@@ -26,9 +26,9 @@ insert into jogador( nome, foto, numero ) values ('Eduardo Bertollo','',14);
 
 insert into time values (1,'Deportivo FC','',0); // 0 - ativo, 1 - inativo
 
-insert into time_jogador values (1,1,1);
-insert into time_jogador values (2,1,2);
-insert into time_jogador values (3,1,3);
+insert into elenco values (1,1,1);
+insert into elenco values (2,1,2);
+insert into elenco values (3,1,3);
 
 select * from time_jogador;
 select * from time;
