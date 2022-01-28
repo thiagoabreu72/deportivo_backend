@@ -8,7 +8,8 @@ create table jogador(
 create table time(
     idTime serial primary key,
     nome text not null,
-    emblema bytea
+    emblema bytea,
+    statusTime int not null
 );
 
 create table time_jogador(
@@ -23,7 +24,7 @@ insert into jogador( nome, foto, numero ) values ('Thiago','',13);
 insert into jogador( nome, foto, numero ) values ('Allan','',33);
 insert into jogador( nome, foto, numero ) values ('Eduardo Bertollo','',14);
 
-insert into time values (1,'Deportivo FC','');
+insert into time values (1,'Deportivo FC','',0); // 0 - ativo, 1 - inativo
 
 insert into time_jogador values (1,1,1);
 insert into time_jogador values (2,1,2);
