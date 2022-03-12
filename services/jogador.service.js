@@ -8,10 +8,6 @@ async function insertJogador(jogador) {
     /*let binario = gerais.codificarImagem(jogador.foto);
     jogador.foto = binario;*/
 
-    
-
-    
-
     return await jogadorRepository.insertJogador(jogador);
   } catch (error) {
     throw error;

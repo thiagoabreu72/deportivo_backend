@@ -5,8 +5,14 @@ async function insertJogador(jogador) {
   const conn = await connect();
   try {
     const sql =
-      "insert into jogador ( nome, foto, numero) values ( $1, $2, $3) RETURNING *";
-    const values = [jogador.nome, jogador.foto, jogador.numero];
+      "insert into jogador ( nome, apelido, foto, numero, posicao ) values ( $1, $2, $3, $4, $5) RETURNING *";
+    const values = [
+      jogador.nome,
+      jogador.apelido,
+      jogador.foto,
+      jogador.numero,
+      jogador.posicao,
+    ];
 
     // Efetua a transação no banco de dados
     const resposta = await conn.query(sql, values);

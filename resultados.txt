@@ -1,0 +1,47 @@
+Primeiro Jogo 
+Deportivo 9 x 9 Visitante
+Gols: Thiago 3, Donavan 3, Zamara 1, Allan 1, Contra 1
+
+Segundo Jogo
+Deportivo 4 x 4 Visitante
+Gols: Donavan 2, Zamara 2
+
+Terceiro Jogo
+Deportivo 5 x 5 Visitante
+Gols: Thiago 2, Eduardo 2, Allan 1
+
+Quarto Jogo
+Deportivo 8 x 10 Adversário
+Gols: Zamara 1, Donnavan 1, Luciano 3, Carlin 3
+
+Quinto Jogo
+Deportivo 10 x 5 Adversário
+Gols: Thiago 3, Donavan 3, Luciano 3, Carlão 1
+
+Temporada 2022
+Jogo dia 26/01/2022
+Deportivo 6 x 5 Adversário
+Gols: Thiago 3, Donnavan 2, Tiago Galo 1
+
+Jogo dia 10/02/2022
+Deportivo 4 x 4 Cascavel Express
+Gols: Thiago 2, Carlin 1, Joãozinho 1
+
+Jogo dia 16/02/2022
+Deportivo 2 x 1 Adversários
+Gols: Eduardo A. 1, Henrique 1
+
+Jogo dia 22/02/2022
+Deportivo 6 x 7 Adversários
+Gols: Pagliarini 3 , Thiago 1, Paulo Henrique 1, Diego 1
+
+Jogo dia 02/03/2022
+Deportivo 8 x 4 Adversários
+Gols: Pagliarini 1, Paulo Henrique 1, Allan 1, Thiago 1, Eduardo A. 2, Contra 2
+
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/thiagoabreu72/teste.git
+git push -u origin main

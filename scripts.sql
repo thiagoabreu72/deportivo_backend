@@ -1,8 +1,10 @@
 create table jogador(
     idJogador serial primary key,
     nome text not null,
+	apelido text,
     foto bytea,
-    numero int 
+    numero int,
+    posicao text
 );
 
 create table time(
