@@ -20,7 +20,19 @@ function decodificarImagem(base, imagem) {
   
 }
 
+function converteData(data){
+  let dia, mes, ano;
+
+  dia = data.substring(8,2);
+  mes = data.substring(5,2);
+  ano = data.substring(0,4);
+
+  return `${dia}/${mes}/${ano}`;
+}
+
+
 export default {
   codificarImagem,
   decodificarImagem,
+  converteData
 };

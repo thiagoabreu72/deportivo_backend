@@ -1,17 +1,17 @@
 import connect from "./db.js";
 
 // Inserir jogador no banco de dados
-async function insertJogador(jogador) {
+async function insertJogo(jogo) {
   const conn = await connect();
   try {
     const sql =
-      "insert into jogador ( nome, apelido, foto, numero, posicao ) values ( $1, $2, $3, $4, $5) RETURNING *";
+      "insert into jogos ( idTimeCasa, idTimeFora, dataJogo, golsCasa, golsFora ) values ( $1, $2, $3, $4, $5) RETURNING *";
     const values = [
-      jogador.nome,
-      jogador.apelido,
-      jogador.foto,
-      jogador.numero,
-      jogador.posicao,
+      jogo.idtimecasa,
+      jogo.idtimefora,
+      jogo.datajogo,
+      jogo.golscasa,
+      jogo.golsfora,
     ];
 
     // Efetua a transação no banco de dados
@@ -27,10 +27,10 @@ async function insertJogador(jogador) {
 }
 
 // Obter jogadores
-async function getJogadores() {
+async function getJogos() {
   const conn = await connect();
   try {
-    const resposta = await conn.query("select * from jogador");
+    const resposta = await conn.query("select * from jogos");
     return resposta.rows;
   } catch (error) {
     throw error;
@@ -40,11 +40,12 @@ async function getJogadores() {
 }
 
 // Retornar jogador com o nome em específico
-async function getJogador(jogador) {
+async function getJogo(jogo) {
   const conn = await connect();
   try {
-    let parametro = `where nome like '\%${jogador.nome}\%'`;
-    const res = await conn.query("select * from jogador " + parametro); //, [parametro]);
+    const res = await conn.query("select * from jogos where idjogo = $1", [
+      jogo.id,
+    ]); //, [parametro]);
     console.log(res.rows);
     return res.rows;
   } catch (error) {
@@ -55,10 +56,14 @@ async function getJogador(jogador) {
 }
 
 // Deletar jogador com o id selecionado
-async function deleteJogador(id) {
+async function deleteJogo(jogo) {
   const conn = await connect();
   try {
-    await conn.query("delete from jogador where idJogador = $1", [id]);
+    console.log(jogo);
+    const retorno = await conn.query("delete from jogos where idJogo = $1", [
+      jogo.id,
+    ]);
+    return retorno.rowCount;
   } catch (error) {
   } finally {
     conn.release();
@@ -66,12 +71,21 @@ async function deleteJogador(id) {
 }
 
 // Atualizar dados do jogador
-async function updateJogador(jogador) {
+async function updateJogo(jogo) {
   const conn = await connect();
   try {
     const sql =
-      "UPDATE jogador SET name = $1, foto = $2, numero = $3 where idJogador = $4 RETURNING *";
-    const values = [jogador.nome, jogador.foto, jogador.numero];
+      "UPDATE jogos SET idTimeCasa = $2, idTimeFora = $3, dataJogo = $4, golsCasa = $5, golsFora = $6 where idJogo = $1 RETURNING *";
+
+    const values = [
+      jogo.idjogo,
+      jogo.idtimecasa,
+      jogo.idtimefora,
+      jogo.datajogo,
+      jogo.golscasa,
+      jogo.golsfora,
+    ];
+
     const resposta = await conn.query(sql, values);
     return resposta.rows[0];
   } catch (error) {
@@ -81,9 +95,9 @@ async function updateJogador(jogador) {
 }
 
 export default {
-  insertJogador,
-  getJogador,
-  getJogadores,
-  deleteJogador,
-  updateJogador,
+  insertJogo,
+  getJogo,
+  getJogos,
+  deleteJogo,
+  updateJogo,
 };

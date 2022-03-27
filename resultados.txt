@@ -39,6 +39,12 @@ Jogo dia 02/03/2022
 Deportivo 8 x 4 Adversários
 Gols: Pagliarini 1, Paulo Henrique 1, Allan 1, Thiago 1, Eduardo A. 2, Contra 2
 
+Jogo dia 16/03/2022
+Deportivo 9 x 3 Adversários
+Gols: Pagliarini 2, Eduardo 4,  Thiago 1, Bruno Henrique 1, Bertollo 1
+
+
+
 git init
 git add README.md
 git commit -m "first commit"

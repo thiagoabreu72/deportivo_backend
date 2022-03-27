@@ -1,6 +1,6 @@
 import express from "express";
 import routeJogador from "./routes/jogador.route.js";
-import routeJogo from "./routes/jogo.route.js";
+import routeJogos from "./routes/jogos.route.js";
 import routeTime from "./routes/time.route.js";
 import routeElenco from "./routes/elenco.route.js";
 
@@ -11,7 +11,7 @@ app.use(express.json()); // habilita para usar dados como json de parâmetros de
 app.use("/jogador", routeJogador);
 app.use("/time", routeTime);
 app.use("/elenco", routeElenco);
-app.use("/jogo", routeJogo);
+app.use("/jogos", routeJogos);
 app.use((err, req, res, next) => {
   res.status(400).send({ error: err.message });
 });
