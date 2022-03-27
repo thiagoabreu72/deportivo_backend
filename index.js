@@ -3,6 +3,7 @@ import routeJogador from "./routes/jogador.route.js";
 import routeJogos from "./routes/jogos.route.js";
 import routeTime from "./routes/time.route.js";
 import routeElenco from "./routes/elenco.route.js";
+import routeArtilheiros from "./routes/artilheiros.route.js";
 
 const app = express(); // cria um objeto do express
 app.use(express.json()); // habilita para usar dados como json de parâmetros de entrada
@@ -12,6 +13,7 @@ app.use("/jogador", routeJogador);
 app.use("/time", routeTime);
 app.use("/elenco", routeElenco);
 app.use("/jogos", routeJogos);
+app.use("/artilheiros", routeArtilheiros);
 app.use((err, req, res, next) => {
   res.status(400).send({ error: err.message });
 });
