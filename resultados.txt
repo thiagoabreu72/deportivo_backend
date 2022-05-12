@@ -43,7 +43,13 @@ Jogo dia 16/03/2022
 Deportivo 9 x 3 Adversários
 Gols: Pagliarini 2, Eduardo 4,  Thiago 1, Bruno Henrique 1, Bertollo 1
 
+Jogo dia 29/03/2022
+Deportivo 6 x 7 Adversários
+Gols: Eduardo 6
 
+Jogo dia 04/04/2022
+Deportivo 6 x 3 Adversários
+Gols: Wellington 2, Bruno Henrique 2, Eduardo 1, Pagliarini 1
 
 git init
 git add README.md
