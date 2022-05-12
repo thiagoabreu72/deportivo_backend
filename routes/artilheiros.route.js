@@ -10,3 +10,4 @@ routeArtilheiros.put("/atualiza", artilheirosController.updateArtilheiro);
 routeArtilheiros.delete("/", artilheirosController.deleteArtilheiro);
 
 export default routeArtilheiros;
+ 
