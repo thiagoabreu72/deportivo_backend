@@ -30,7 +30,15 @@ async function insertJogo(jogo) {
 async function getJogos() {
   const conn = await connect();
   try {
-    const resposta = await conn.query("select * from jogos");
+    const query =
+      "SELECT jogos.idjogo, jogos.idtimecasa, casa.nome, " +
+      "     jogos.golscasa, jogos.idtimefora,fora.nome, " +
+      "     jogos.golsfora, To_char(jogos.datajogo, 'DD/MM/YYYY')" +
+      "  FROM   jogos, time casa, time fora" +
+      "  WHERE  jogos.idtimecasa = casa.idtime " +
+      "       AND jogos.idtimefora = fora.idtime";
+
+    const resposta = await conn.query(query);
     return resposta.rows;
   } catch (error) {
     throw error;
