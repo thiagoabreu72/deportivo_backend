@@ -33,7 +33,7 @@ async function getJogos() {
     const query =
       "SELECT jogos.idjogo, jogos.idtimecasa, casa.nome, " +
       "     jogos.golscasa, jogos.idtimefora,fora.nome, " + 
-      "     jogos.golsfora, To_char(jogos.datajogo, 'DD/MM/YYYY')" +
+      "     jogos.golsfora, To_char(jogos.datajogo, 'DD/MM/YYYY') as datajogo" +
       "  FROM   jogos, time casa, time fora" +
       "  WHERE  jogos.idtimecasa = casa.idtime " +
       "       AND jogos.idtimefora = fora.idtime";
