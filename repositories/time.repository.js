@@ -5,7 +5,7 @@ async function insertTime(time) {
   const conn = await connect();
   try {
     const sql =
-      "insert into time ( idtime, nome, emblema, statustime) values ( $1, $2, $3, $4) RETURNING *";
+      "insert into time ( idtime, nome, emblema, statustime, abreviacao) values ( $1, $2, $3, $4, $5) RETURNING *";
     const values = [time.idtime, time.nome, time.emblema, time.statustime];
 
     // Efetua a transação no banco de dados
