@@ -47,10 +47,18 @@ async function deleteJogo(req, res, next) {
   }
 }
 
+async function getJogoArtilheiros(req, res, next) {
+  try {
+    const retorno = await jogosService.getJogoArtilheiros(req.params.idjogo);
+    res.send(retorno);
+  } catch (error) {}
+}
+
 export default {
   insertJogo,
   getJogo,
   getJogos,
   updateJogo,
   deleteJogo,
+  getJogoArtilheiros,
 };

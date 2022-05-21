@@ -32,7 +32,7 @@ async function getJogos() {
   try {
     const query =
       "SELECT jogos.idjogo, jogos.idtimecasa, casa.nome timecasa, casa.abreviacao casaAbr, " +
-      "     jogos.golscasa, jogos.idtimefora,fora.nome timefora, fora.abreviacao foraAbr, " + 
+      "     jogos.golscasa, jogos.idtimefora,fora.nome timefora, fora.abreviacao foraAbr, " +
       "     jogos.golsfora, To_char(jogos.datajogo, 'DD/MM/YYYY') as datajogo" +
       "  FROM   jogos, time casa, time fora" +
       "  WHERE  jogos.idtimecasa = casa.idtime " +
@@ -102,10 +102,26 @@ async function updateJogo(jogo) {
   }
 }
 
+// Busca os artilheiros por jogo
+async function getJogoArtilheiros(idjogo) {
+  const conn = await connect();
+  try {
+    const resposta = await conn.query(
+      "select * from artilheiros where idjogo = $1",
+      [idjogo]
+    );
+    return resposta.rows;
+  } catch (error) {
+  } finally {
+    conn.release();
+  }
+}
+
 export default {
   insertJogo,
   getJogo,
   getJogos,
   deleteJogo,
   updateJogo,
+  getJogoArtilheiros,
 };

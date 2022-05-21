@@ -41,10 +41,19 @@ async function deleteJogo(jogo) {
   }
 }
 
+async function getJogoArtilheiros(idjogo) {
+  try {
+    return await jogosRepository.getJogoArtilheiros(idjogo);
+  } catch (error) {
+    throw error;
+  }
+}
+
 export default {
   insertJogo,
   getJogo,
   getJogos,
   updateJogo,
   deleteJogo,
+  getJogoArtilheiros,
 };
