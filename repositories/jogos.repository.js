@@ -106,10 +106,9 @@ async function updateJogo(jogo) {
 async function getJogoArtilheiros(idjogo) {
   const conn = await connect();
   try {
-    const resposta = await conn.query(
-      "select * from artilheiros where idjogo = $1",
-      [idjogo]
-    );
+    const sql =
+      "SELECT artilheiros.*, jogador.nome FROM artilheiros, jogador where artilheiros.idJogador = jogador.idJogador and idjogo = $1";
+    const resposta = await conn.query(sql, [idjogo]);
     return resposta.rows;
   } catch (error) {
   } finally {
