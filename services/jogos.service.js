@@ -59,7 +59,7 @@ async function getEstatisticas() {
 
     retorno[0].mediasofridos = Number.parseFloat(
       retorno[0].mediasofridos
-    ).toFixed(2);
+    ).toFixed(2); 
 
     return retorno;
   } catch (error) {
