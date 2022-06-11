@@ -49,6 +49,24 @@ async function getJogoArtilheiros(idjogo) {
   }
 }
 
+async function getEstatisticas() {
+  try {
+    let retorno = await jogosRepository.getEstatisticas();
+
+    retorno[0].mediafeitos = Number.parseFloat(retorno[0].mediafeitos).toFixed(
+      2
+    );
+
+    retorno[0].mediasofridos = Number.parseFloat(
+      retorno[0].mediasofridos
+    ).toFixed(2);
+
+    return retorno;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export default {
   insertJogo,
   getJogo,
@@ -56,4 +74,5 @@ export default {
   updateJogo,
   deleteJogo,
   getJogoArtilheiros,
+  getEstatisticas,
 };

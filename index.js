@@ -1,5 +1,5 @@
 import express from "express";
-import cors from 'cors';
+import cors from "cors";
 import routeJogador from "./routes/jogador.route.js";
 import routeJogos from "./routes/jogos.route.js";
 import routeTime from "./routes/time.route.js";

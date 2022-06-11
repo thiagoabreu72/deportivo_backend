@@ -116,6 +116,39 @@ async function getJogoArtilheiros(idjogo) {
   }
 }
 
+// Montas as estatísticas dos jogos
+async function getEstatisticas() {
+  const conn = await connect();
+  try {
+    const sql =
+      "select count(1) qtdjogos, sum(golscasa) feitos, sum(golsfora) sofridos, " +
+      "avg(golscasa) mediafeitos, AVG (golsfora)::NUMERIC(2) mediasofridos , " +
+      "(select count(1) from (SELECT case  " +
+      "when (golscasa > golsfora) then 'V'  " +
+      "when (golscasa < golsfora) then 'D' " +
+      "when (golscasa = golsfora) then 'E' " +
+      "end as resultado FROM jogos) A where A.resultado = 'V')vitorias, " +
+      "(select count(1) from (SELECT case  " +
+      "when (golscasa > golsfora) then 'V' " +
+      "when (golscasa < golsfora) then 'D' " +
+      "when (golscasa = golsfora) then 'E' " +
+      "end as resultado FROM jogos) A where A.resultado = 'D') derrotas, " +
+      "(select count(1) from (SELECT case  " +
+      "when (golscasa > golsfora) then 'V' " +
+      "when (golscasa < golsfora) then 'D' " +
+      "when (golscasa = golsfora) then 'E' " +
+      "end as resultado FROM jogos) A where A.resultado = 'E') empates " +
+      "from jogos";
+
+    const resposta = await conn.query(sql);
+    return resposta.rows;
+  } catch (error) {
+    throw error;
+  } finally {
+    conn.release();
+  }
+}
+
 export default {
   insertJogo,
   getJogo,
@@ -123,4 +156,5 @@ export default {
   deleteJogo,
   updateJogo,
   getJogoArtilheiros,
+  getEstatisticas,
 };

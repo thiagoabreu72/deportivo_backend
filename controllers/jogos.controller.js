@@ -54,6 +54,15 @@ async function getJogoArtilheiros(req, res, next) {
   } catch (error) {}
 }
 
+async function getEstatisticas(req, res, next) {
+  try {
+    const retorno = await jogosService.getEstatisticas();
+    res.send(retorno);
+  } catch (error) {
+    throw error;
+  }
+}
+
 export default {
   insertJogo,
   getJogo,
@@ -61,4 +70,5 @@ export default {
   updateJogo,
   deleteJogo,
   getJogoArtilheiros,
+  getEstatisticas,
 };
