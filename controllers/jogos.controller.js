@@ -61,7 +61,7 @@ async function getEstatisticas(req, res, next) {
   } catch (error) {
     throw error;
   }
-}
+} 
 
 export default {
   insertJogo,
