@@ -43,8 +43,8 @@ async function getJogadores() {
 async function getJogador(jogador) {
   const conn = await connect();
   try {
-    let parametro = `where nome like '\%${jogador.nome}\%'`;
-    const res = await conn.query("select * from jogador " + parametro); //, [parametro]);
+    let sql = `select * from jogador where nome like '\%${jogador.nome}\%'`;
+    const res = await conn.query(sql); //, [parametro]);
     console.log(res.rows);
     return res.rows;
   } catch (error) {

@@ -24,6 +24,10 @@ app.use((err, req, res, next) => {
 });
 
 // criação do servidor na porta 3003
-app.listen(process.env.PORT, () => {
+// app.listen(process.env.PORT, () => {
+//   console.log("Iniciada");
+// });
+
+app.listen(3000, () => {
   console.log("Iniciada");
 });

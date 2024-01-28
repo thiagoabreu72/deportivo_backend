@@ -12,7 +12,7 @@ async function insertJogador(req, res, next) {
 
 async function getJogador(req, res, next) {
   try {
-    //console.log(req.query)
+    console.log(req.query)
     const retorno = await jogadorService.getJogador(req.query);
     res.send(retorno);
   } catch (error) {
