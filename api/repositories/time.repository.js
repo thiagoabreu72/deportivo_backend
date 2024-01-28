@@ -3,17 +3,12 @@ import connect from "./db.js";
 // Inserir time no banco de dados
 async function insertTime(time) {
   const conn = await connect();
-  // console.log(time);
+
   try {
-    // const retorno = await consultarExistencia(time.nomeTime);
+    const retorno = await consultarExistencia(time.nome);
 
-    const valor = await conn.query(
-      `select * from time where nome = '${time.nome}'`
-    );
-    console.log(valor.rowCount);
-
-    if (valor.rowCount !== 0) {
-      return "time já cadastrado";
+    if (retorno !== 0) {
+      return { retorno: "time já cadastrado" };
     } else {
       const buscaId = await conn.query("select max(idtime) id from time");
       if (buscaId.rows[0].id == null) time.idtime = 1;
@@ -64,7 +59,7 @@ async function consultarExistencia(nomeTime) {
       "select * from time where nome = $1",
       nomeTime
     );
-    return valor;
+    return valor.rowCount;
   } catch (error) {}
 }
 
