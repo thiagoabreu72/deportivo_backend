@@ -4,19 +4,26 @@ import connect from "./db.js";
 async function insertJogador(jogador) {
   const conn = await connect();
   try {
-    const sql =
-      "insert into jogador ( nome, apelido, foto, numero, posicao ) values ( $1, $2, $3, $4, $5) RETURNING *";
-    const values = [
-      jogador.nome,
-      jogador.apelido,
-      jogador.foto,
-      jogador.numero,
-      jogador.posicao,
-    ];
+    const retorno = await consultarExistencia(jogador.nome);
+    console.log(retorno);
 
-    // Efetua a transação no banco de dados
-    const resposta = await conn.query(sql, values);
-    return resposta.rows[0];
+    if (retorno > 0) {
+      return { retorno: "Jogador já cadastrado." };
+    } else {
+      const sql =
+        "insert into jogador ( nome, apelido, foto, numero, posicao ) values ( $1, $2, $3, $4, $5) RETURNING *";
+      const values = [
+        jogador.nome,
+        jogador.apelido,
+        jogador.foto,
+        jogador.numero,
+        jogador.posicao,
+      ];
+
+      // Efetua a transação no banco de dados
+      const resposta = await conn.query(sql, values);
+      return resposta.rows[0];
+    }
   } catch (error) {
     throw error;
   } finally {
@@ -43,7 +50,8 @@ async function getJogadores() {
 async function getJogador(jogador) {
   const conn = await connect();
   try {
-    let sql = `select * from jogador where nome like '\%${jogador.nome}\%'`;
+    const selecao = jogador.nome.toUpperCase();
+    let sql = `select * from jogador where upper(nome) like '\%${selecao}\%'`;
     const res = await conn.query(sql); //, [parametro]);
     console.log(res.rows);
     return res.rows;
@@ -77,6 +85,22 @@ async function updateJogador(jogador) {
   } catch (error) {
   } finally {
     conn.release();
+  }
+}
+
+// Função para verificar se existe time com esse nome.
+async function consultarExistencia(nomeJogador) {
+  console.log(nomeJogador);
+  const conn = await connect();
+  try {
+    const valor = await conn.query(
+      "select count(1) contador from jogador where nome = $1",
+      [nomeJogador]
+    );
+    console.log(valor.rows[0].contador);
+    return valor.rows[0].contador;
+  } catch (error) {
+    console.log(error);
   }
 }
 
