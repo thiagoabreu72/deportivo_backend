@@ -63,7 +63,25 @@ async function consultarExistencia(nomeTime) {
   } catch (error) {}
 }
 
+// Deletar time com o id selecionado
+async function deleteTime(id) {
+  const conn = await connect();
+  try {
+    const retorno = await conn.query("delete from time where idtime = $1", [
+      id,
+    ]);
+    // console.log(retorno.rowCount > 0);
+    if (retorno.rowCount > 0)
+      return { id: id, status: "Time deletado com sucesso!" };
+    else return { id: id, status: "Time não encontrado." };
+  } catch (error) {
+  } finally {
+    conn.release();
+  }
+}
+
 export default {
   insertTime,
   getTimes,
+  deleteTime,
 };

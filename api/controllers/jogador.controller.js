@@ -30,6 +30,8 @@ async function getJogadores(req, res, next) {
 
 async function updateJogador(req, res, next) {
   try {
+    const retorno = await jogadorService.updateJogador(req.body);
+    res.send(retorno);
   } catch (error) {
     next(error);
   }
@@ -37,6 +39,9 @@ async function updateJogador(req, res, next) {
 
 async function deleteJogador(req, res, next) {
   try {
+    console.log(req.params);
+    const retorno = await jogadorService.deleteJogador(req.params.id);
+    res.send(retorno);
   } catch (error) {
     next(error);
   }

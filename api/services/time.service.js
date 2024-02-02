@@ -3,11 +3,6 @@ import gerais from "./gerais.service.js";
 
 async function insertTime(time) {
   try {
-
-    console.table(time)
-    /*let binario = gerais.codificarImagem(jogador.foto);
-    jogador.foto = binario;*/
-
     return await timeRepository.insertTime(time);
   } catch (error) {
     throw error;
@@ -30,6 +25,14 @@ async function getTimes() {
   }
 }
 
+async function deleteTime(id) {
+  try {
+    return await timeRepository.deleteTime(id);
+  } catch (error) {
+    throw error;
+  }
+}
+
 /*async function updateJogador(jogador) {
   try {
     return await jogadorRepository.updateJogador(jogador);
@@ -47,6 +50,7 @@ async function deleteJogador(id) {
 }*/
 
 export default {
- insertTime,
- getTimes
+  insertTime,
+  getTimes,
+  deleteTime,
 };

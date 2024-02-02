@@ -3,11 +3,6 @@ import gerais from "../services/gerais.service.js";
 
 async function insertJogador(jogador) {
   try {
-
-    console.table(jogador)
-    /*let binario = gerais.codificarImagem(jogador.foto);
-    jogador.foto = binario;*/
-
     return await jogadorRepository.insertJogador(jogador);
   } catch (error) {
     throw error;

@@ -29,21 +29,17 @@ async function getTimes(req, res, next) {
   }
 }
 
-/*async function updateJogador(req, res, next) {
+async function deleteTime(req, res, next) {
   try {
+    const retorno = await timeService.deleteTime(req.params.id);
+    res.send(retorno);
   } catch (error) {
     next(error);
   }
 }
 
-async function deleteJogador(req, res, next) {
-  try {
-  } catch (error) {
-    next(error);
-  }
-}*/
-
 export default {
   insertTime,
-  getTimes
+  getTimes,
+  deleteTime,
 };

@@ -76,5 +76,5 @@ async function updateJogador(jogador) {
 
 export default {
   insertElenco,
-  getElenco
+  getElenco,
 };
