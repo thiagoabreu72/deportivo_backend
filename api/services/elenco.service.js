@@ -4,7 +4,7 @@ import timeService from "./time.service.js";
 
 async function insertElenco(elenco) {
   try {
-    console.table(elenco);
+    // console.table(elenco);
     /*let binario = gerais.codificarImagem(jogador.foto);
     jogador.foto = binario;*/
 

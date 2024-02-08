@@ -3,22 +3,22 @@ import gerais from "../services/gerais.service.js";
 
 async function insertElenco(req, res, next) {
   try {
-    const retorno = await elencoService.insertElenco(req.body);
+    let retorno;
+    for (let jogador of req.body.idJogadores) {
+      // console.log(retorno);
+      console.log(jogador);
+      let elenco = {
+        idElenco: req.body.idElenco,
+        idTime: req.body.idTime,
+        idJogador: jogador,
+      };
+      retorno = await elencoService.insertElenco(elenco);
+    }
     res.send(retorno);
   } catch (error) {
     next(error);
   }
 }
-
-/*async function getJogador(req, res, next) {
-  try {
-    //console.log(req.query)
-    const retorno = await jogadorService.getJogador(req.query);
-    res.send(retorno);
-  } catch (error) {
-    next(error);
-  }
-}*/
 
 async function getElenco(req, res, next) {
   try {
@@ -45,5 +45,5 @@ async function deleteJogador(req, res, next) {
 
 export default {
   insertElenco,
-  getElenco
+  getElenco,
 };

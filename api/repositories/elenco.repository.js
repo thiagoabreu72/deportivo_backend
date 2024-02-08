@@ -7,6 +7,10 @@ async function insertElenco(time) {
     const sql =
       "insert into elenco ( idElenco, idTime, idJogador) values ( $1, $2, $3) RETURNING *";
     const values = [time.idElenco, time.idTime, time.idJogador];
+    console.log(time);
+    // const sql =
+    //   "insert into elenco (  idTime, idJogador) values ( $1, $2) RETURNING *";
+    // const values = [time.idTime, time.idJogador];
 
     // Efetua a transação no banco de dados
     const resposta = await conn.query(sql, values);
